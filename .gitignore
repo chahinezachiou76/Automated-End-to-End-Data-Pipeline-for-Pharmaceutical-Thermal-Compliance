@@ -1,0 +1,10 @@
+# Terraform files
+.terraform/
+*.exe
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+# OS files
+Thumbs.db
+.DS_Store
