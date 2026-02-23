@@ -1,5 +1,9 @@
 This project addresses a critical challenge in pharmaceutical logistics: ensuring the thermal integrity of temperature-sensitive medicines and vaccines during storage and transport. By leveraging a serverless AWS Data Pipeline, the system automates the ingestion, transformation, and visualization of IoT sensor data to maintain safety compliance.
-
+<details>
+  <summary><b>Click to view detailed Architecture Diagram</b></summary>
+  <br>
+  <img src="real time IOT monitoring for medical cold chain storage-Page-2.drawio.png" width="100%">
+</details>
  System Architecture & Workflow
 The pipeline is designed to handle high-velocity data with zero manual intervention:
 
