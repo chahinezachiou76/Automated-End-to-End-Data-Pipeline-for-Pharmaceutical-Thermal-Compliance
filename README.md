@@ -2,7 +2,7 @@ This project addresses a critical challenge in pharmaceutical logistics: ensurin
 <details>
   <summary><b>Click to view detailed Architecture Diagram</b></summary>
   <br>
-  <img src="real time IOT monitoring for medical cold chain storage-Page-2.drawio.png" width="100%">
+  <img src="ral time IOTmonitoring for medical cold chain storage-Page-2-Page-2.drawio.png" width="100%">
 </details>
  System Architecture & Workflow
 The pipeline is designed to handle high-velocity data with zero manual intervention:
