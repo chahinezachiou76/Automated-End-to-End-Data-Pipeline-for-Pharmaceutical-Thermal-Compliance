@@ -6,8 +6,8 @@ resource "aws_kinesis_firehose_delivery_stream" "vaccine_firehose" {
     role_arn   = aws_iam_role.firehose_role.arn
     bucket_arn = var.target_s3_arn
 
-    buffering_size     = 1  # 1 MB
-    buffering_interval = 60 # 60 ثانية
+    buffering_size     = 1  
+    buffering_interval = 60 
   }
 }
 

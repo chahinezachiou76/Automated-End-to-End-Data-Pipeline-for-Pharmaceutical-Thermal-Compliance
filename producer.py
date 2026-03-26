@@ -4,8 +4,7 @@ import time
 import random
 from datetime import datetime
 
-# إعداد الاتصال بـ LocalStack
-# نستخدم 'test' كـ مفاتيح وهمية لأننا في بيئة محلية
+# Initialize Firehose client for LocalStack
 firehose = boto3.client(
     'firehose',
     endpoint_url='http://localhost:4566',
@@ -14,12 +13,10 @@ firehose = boto3.client(
     aws_secret_access_key='test'
 )
 
-# تأكد أن هذا الاسم يطابق الاسم الموجود في ملف Terraform الخاص بك
 STREAM_NAME = "coldchain-vaccine-firehose"
 
 def generate_sensor_data():
-    """توليد بيانات شحنة (حرارة عشوائية)"""
-    # توليد حرارة بين -25 و -10 (درجة التجميد المطلوبة عادة هي تحت -18)
+    """Generate random cold chain sensor data (Temperature Monitoring)"""
     temperature = random.uniform(-25, -10) 
     
     data = {
@@ -32,22 +29,22 @@ def generate_sensor_data():
     return data
 
 def run_producer():
-    print(f"📡 البدء في إرسال بيانات سلسلة التبريد إلى {STREAM_NAME}...")
+    print(f"📡 Starting data stream to {STREAM_NAME}...")
     try:
         while True:
             payload = generate_sensor_data()
-            print(f"📦 إرسال شحنة: {payload}")
+            print(f"📦 Sending payload: {payload}")
             
-            # إرسال السجل إلى Kinesis Firehose
+            # Send record to Kinesis Firehose
             firehose.put_record(
                 DeliveryStreamName=STREAM_NAME,
                 Record={'Data': json.dumps(payload) + '\n'}
             )
             
-            # انتظر ثانيتين قبل إرسال القراءة التالية
+            # Wait 2 seconds before next reading
             time.sleep(2)  
     except KeyboardInterrupt:
-        print("\n🛑 توقف المولد يدوياً.")
+        print("\n🛑 Producer stopped manually.")
 
 if __name__ == "__main__":
     run_producer()
